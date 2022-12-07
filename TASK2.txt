@@ -1,0 +1,127 @@
+//main.cpp
+
+
+#include<iostream>
+#include"MyChar.h"
+using namespace std;
+int main()
+{
+	char ch;
+	cout << " Enter a character :";
+	cin >> ch;
+	
+	MyChar obj(ch);
+	obj.display();
+	int range;
+	cout << " Enter range of the object :";
+	cin >> range;
+	char c;
+	int count = 0;
+	char array1[1000];
+	MyChar obj1[1000];
+	for (int i = 0; i < range; i++)
+	{
+		cout << " Enter a character :";
+		cin >> c;
+		obj1[i].setvalue(c);
+		array1[i]=obj1[i].getvalue();
+		count++;
+	}
+	for (int i = 0; i < range; i++)
+	{
+		obj1[i].display1();
+	}
+	
+	MyChar data(array1, count);
+
+	
+	
+	
+	
+	
+	
+	system("pause");
+	return 0;
+}
+
+
+ 
+//MyChar.h
+
+
+
+
+class  MyChar
+{
+private :
+	char n;
+	char n1;
+public:
+	MyChar(char);
+	MyChar();
+	MyChar(char*, int);
+	void setvalue(char);
+	char  getvalue();
+	void display();
+	void display1();
+
+};
+
+
+//MyChar.cpp
+
+
+
+#include<iostream>
+#include"MyChar.h"
+using namespace std;
+MyChar::MyChar()
+{
+	n = NULL;
+	n1 = NULL;
+}
+MyChar::MyChar(char x)
+{
+	if (x >= 'A'&&x <= 'Z')
+	{
+		n = x + 32;
+	}
+	if (x >= 'a'&& x <= 'z')
+	{
+		n = x - 32 ;
+	}
+}
+void MyChar::display()
+{
+	cout << " Your character is " << n << endl;
+}
+void MyChar :: setvalue(char x)
+{
+	n1 = x;
+
+}
+char MyChar::getvalue()
+{
+	return n1;
+}
+MyChar::MyChar(char *x, int s)
+{
+	for (int i = 0; i < s; i++)
+	{
+		char k = NULL;
+		if (x[i] >= 'A'&&x[i] <= 'Z')
+		{
+			k = x[i] + 32;
+			cout << "  " << k << "  ";
+		}
+		if (x[i] >= 'a'&& x[i] <= 'z')
+		{
+			k = x[i] - 32;
+			cout << "  " << k << "  ";
+		}
+	}
+}
+void MyChar::display1()
+{
+	cout << " Your character is " << n1 << endl;
+}
